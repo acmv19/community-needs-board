@@ -1,24 +1,19 @@
-# README
+# Community Needs Board
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on Rails project developed as part of a course assignment. It simulates a community board where users can create posts and leave comments.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- User model with authentication logic (to be extended)
+- Posts with title and content
+- Comments associated with posts and users
+- Database structure created with migrations
 
-* System dependencies
+## Getting Started
 
-* Configuration
+To test this project locally:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/community-needs-board.git
+   cd community-needs-board
