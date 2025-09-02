@@ -8,7 +8,7 @@ RSpec.describe "posts/show.html.erb", type: :view do
     comment2 = Comment.create!(content: "Thanks for sharing", post: post, user: user)
 
     assign(:post, post)
-    assign(:comments, [comment1, comment2])
+    assign(:comments, [ comment1, comment2 ])
 
     render
 

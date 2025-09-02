@@ -1,4 +1,4 @@
-#equire 'rails_helper'
+# equire 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
 # the PostsHelper. For example:
@@ -10,6 +10,6 @@
 #     end
 #   end
 # end
-#Spec.describe PostsHelper, type: :helper do
-  #ending "add some examples to (or delete) #{__FILE__}"
-#nd
+# Spec.describe PostsHelper, type: :helper do
+# ending "add some examples to (or delete) #{__FILE__}"
+# nd

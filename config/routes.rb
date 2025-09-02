@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-   root "dashboard#index" 
+   root "dashboard#index"
 
   get "dashboard/index"
   get "users/new"
@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   get "posts/index"
   get "posts/show"
 
-  resources :users, only: [:new, :create]
-  resource :session, only: [:new, :create, :destroy]
-  resources :posts, only: [:index, :show, :new, :create] do
-    resources :comments, only: [:create]
+  resources :users, only: [ :new, :create ]
+  resource :session, only: [ :new, :create, :destroy ]
+  resources :posts, only: [ :index, :show, :new, :create ] do
+    resources :comments, only: [ :create ]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
