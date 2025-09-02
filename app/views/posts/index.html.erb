@@ -1,0 +1,12 @@
+<h1>Community Needs Board</h1>
+<p><%= link_to "New Post", new_post_path %></p>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <a href="<%= post_path(post) %>"><%= post.title %></a>
+      — by <%= post.user.name %>
+      <p><%= post.content %></p>
+    </li>
+  <% end %>
+</ul>

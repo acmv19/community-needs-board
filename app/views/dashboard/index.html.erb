@@ -1,0 +1,24 @@
+<h1>COMMUNITY NEEDS BOARD</h1>
+<p>Dashboard</p>
+<h2>WELCOME TO MY APP</h2>
+
+<ul>
+  <li><%= link_to "Login", login_path %></li>
+  <li><%= link_to "Create User", new_user_path %></li>
+  <li><%= link_to "View Posts", posts_path %></li>
+</ul>
+
+<h2>Posts</h2>
+
+<% if @posts.present? %>
+  <% @posts.each do |post| %>
+    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+      <h3><%= post.title %></h3>
+      <p><%= post.content %></p>
+      <p>By: <%= post.user.name %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>No posts yet.</p>
+<% end %>
+<p><%= link_to "Create New Post", new_post_path %></p>
