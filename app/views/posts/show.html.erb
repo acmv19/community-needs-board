@@ -5,10 +5,18 @@
 
 <h3>Comments</h3>
 <% @post.comments.each do |comment| %>
-  <p><strong><%= comment.user.name %>:</strong> <%= comment.content %></p>
+  <div>
+    <p>
+      <strong><%= comment.user.name %>:</strong> <%= comment.content %>
+      <% if logged_in? && comment.user == current_user %>
+        | <%= link_to "Edit", edit_post_comment_path(@post, comment) %>
+        <% end %>
+    </p>
+  </div>
 <% end %>
 
-<% if logged_in? %>
+<% if logged_in? && current_user == @post.user %>
+  <%= link_to "Edit Post", edit_post_path(@post) %>
   <h4>Add a comment</h4>
   <%= form_with(model: [@post, Comment.new], local: true) do |f| %>
     <p>
@@ -21,5 +29,5 @@
   <p>You must <%= link_to "log in", login_path %> to comment.</p>
 <% end %>
 <p>
-<%= link_to "Back to Posts", posts_path, class: "btn btn-primary" %>
+<%= link_to "Back to Posts", posts_path%>
 </p>

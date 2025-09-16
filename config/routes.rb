@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [ :new, :create ]
   resource :session, only: [ :new, :create, :destroy ]
-  resources :posts, only: [ :index, :show, :new, :create ] do
-    resources :comments, only: [ :create ]
+  resources :posts, only: [ :index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :comments, only: [ :create, :edit, :update, :destroy ]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
