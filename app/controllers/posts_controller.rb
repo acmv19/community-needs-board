@@ -62,5 +62,3 @@ end
     params.require(:post).permit(:title, :content)
   end
 end
-
-

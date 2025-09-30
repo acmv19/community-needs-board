@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   def edit
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    #only the comment owner can edit
+    # only the comment owner can edit
     if @comment.user != current_user
       redirect_to post_path(@post), alert: "You can only edit your own comments."
     end
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   def update
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    #only the comment owner can update
+    # only the comment owner can update
     if @comment.user != current_user
       redirect_to post_path(@post), alert: "You can only edit your own comments."
       return
@@ -35,12 +35,12 @@ class CommentsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
-  end 
+  end
 
   def destroy
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    #only the comment owner can delete
+    # only the comment owner can delete
     if @comment.user != current_user
       redirect_to post_path(@post), alert: "You can only delete your own comments."
       return
@@ -54,4 +54,3 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content)
   end
 end
-
