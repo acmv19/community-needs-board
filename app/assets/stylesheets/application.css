@@ -8,3 +8,209 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 20px 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.logo {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #1abc9c;
+}
+
+/* Contenedor principal */
+.container {
+  flex: 1;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Footer */
+.footer {
+  background-color: #ecf0f1;
+  color: #7f8c8d;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+/* Cards */
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  padding: 15px;
+  margin-bottom: 20px;
+   opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards; 
+  animation-delay: 0.1s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Buttons */
+.btn {
+  background-color: #2c3e50; 
+  color: #ffffff; 
+  border: 1.5px solid #2c3e50; 
+  padding: 6px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-size: 0.9rem; 
+  margin: 4px; /* <<< espace btns*/
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #ffffff;
+  color: #2c3e50;
+  border-color: #2c3e50;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+  outline: 2px solid #1abc9c; 
+  outline-offset: 2px;
+  transform: translateY(-2px) scale(1.2); /* light zoom */
+}
+
+/* Forms */
+input[type="submit"].btn,
+button.btn {
+  display: inline-block;
+}
+
+/* Navbar links with btns styles */
+.nav-links li a {
+  color: #ffffff; 
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s, background 0.3s;
+  padding: 4px 10px; 
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin: 0 6px; /* <<< espace lateral entre links*/
+}
+
+.nav-links li a:hover,
+.nav-links li a:focus {
+  color: #2c3e50; 
+  background-color: #ffffff; 
+  outline: 2px solid #1abc9c;
+  outline-offset: 2px;
+}
+
+
+/* ---- Title ---- */
+.page-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin: 40px 0 30px;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+/* ---- Post List ---- */
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.post-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* ---- Posts ---- */
+.post-title {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+}
+
+.post-title a {
+  color: #2c3e50;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.post-title a:hover {
+  color: #1abc9c;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: #3f0561;
+  margin-bottom: 12px;
+}
+
+/* ---- Content ---- */
+.post-content {
+  font-size: 1rem;
+  color: #34495e;
+  line-height: 1.5;
+}
+
+/* ---- New Post Button ---- */
+.new-post-link {
+  text-align: center;
+  margin-top: 30px;
+}
