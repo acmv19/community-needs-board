@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+   root "dashboard#index"
+
+  get "dashboard/index"
+  get "users/new"
+  get "users/create"
+
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  get "/logout", to: "sessions#destroy"
+
+  get "posts/index"
+  get "posts/show"
+
+  resources :users, only: [ :new, :create ]
+  resource :session, only: [ :new, :create, :destroy ]
+  resources :posts, only: [ :index, :show, :new, :create, :edit, :update, :destroy ] do
+    resources :comments, only: [ :create, :edit, :update, :destroy ]
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

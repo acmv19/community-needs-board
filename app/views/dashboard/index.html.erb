@@ -1,0 +1,15 @@
+
+<h2>POSTS</h2>
+
+<% if @posts.present? %>
+  <% @posts.each do |post| %>
+    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+      <h3><%= post.title %></h3>
+      <p><%= post.content %></p>
+      <p>By: <%= post.user.name %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>No posts yet.</p>
+<% end %>
+<p><%= link_to "Create New Post", new_post_path %></p>

@@ -1,0 +1,16 @@
+<h1  class="page-title">Community Needs Board</h1>
+
+
+<ul class="post-list">
+  <% @posts.each do |post| %>
+    <l <h2 class="post-title">
+        <a href="<%= post_path(post) %>"><%= post.title %></a>
+      </h2>
+      <p class="post-meta">by <%= post.user.name %></p>
+      <p class="post-content"><%= post.content %></p>
+    </li>
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "➕ New Post", new_post_path,  class: "btn" %></p>
