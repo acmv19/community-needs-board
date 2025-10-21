@@ -3,9 +3,13 @@
 
 <ul class="post-list">
   <% @posts.each do |post| %>
-    <l <h2 class="post-title">
-        <a href="<%= post_path(post) %>"><%= post.title %></a>
+    <li class="post-card">
+    <div class="post-header">
+        <div class="avatar"><%= post.user.name[0].upcase %></div>
+     <h2 class="post-title">
+        <a href="<%= post_path(post) %>"><%= post.title %></a>  <span class="post-time">• <%= time_ago_in_words(post.created_at) %> ago</span>
       </h2>
+    </div>
       <p class="post-meta">by <%= post.user.name %></p>
       <p class="post-content"><%= post.content %></p>
     </li>
@@ -13,4 +17,4 @@
   <% end %>
 </ul>
 
-<p><%= link_to "➕ New Post", new_post_path,  class: "btn" %></p>
+<p><%= link_to "➕ New Post", new_post_path,  class: "floating-btn2" %></p>

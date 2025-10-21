@@ -1,4 +1,6 @@
-<h1>Edit Post</h1>
+<h1 class="edit-post"> ✏️  Edit Post</h1>
+
+<p class="edit-post">Make changes to your post below:</p>
 
 <%= form_with model: @post, local: true do |form| %>
   <% if @post.errors.any? %>
@@ -12,19 +14,20 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <%= form.label :title, "Title", class: "form-label" %><br>
+    <%= form.text_field :title, class: "form-input"  %>
   </div>
 
-  <div>
-    <%= form.label :content %><br>
-    <%= form.text_area :content %>
+  <div class="form-group">
+    <%= form.label :content, "Content", class: "form-label" %><br>
+    <%= form.text_area :content, rows: 6, class: "form-input" %>
   </div>
 
-  <div>
-    <%= form.submit "Update Post",  class: "btn"  %>
+  <div  class="form-actions">
+    <%= form.submit "💾 Update Post",  class: "btn btn-primary"  %>
+    <%= link_to "⬅️ Back to Post", @post, class:" btn-secondary" %>
   </div>
 <% end %>
 
-<%= link_to "Back to Post", @post %>
+

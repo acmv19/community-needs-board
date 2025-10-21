@@ -3,16 +3,17 @@
 <%= form_with model: @user, url: users_path do |f| %>
   <p>
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: "Enter your name"  %>
   </p>
   <p>
     <%= f.label :email %><br>
-    <%= f.email_field :email %>
+    <%= f.email_field :emaill, placeholder: "youremail@gmail.com" %>
   </p>
   <p>
     <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, placeholder: "Choose a password" %>
   </p>
+  <br>
   <p>
     <%= f.submit "Sign Up", class: "btn"  %>
   </p>

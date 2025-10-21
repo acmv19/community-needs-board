@@ -1,15 +1,20 @@
 
-<h2>POSTS</h2>
+<h2 class="page-title">POSTS</h2>
 
 <% if @posts.present? %>
+<ul class="post-list">
   <% @posts.each do |post| %>
-    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
-      <h3><%= post.title %></h3>
-      <p><%= post.content %></p>
-      <p>By: <%= post.user.name %></p>
-    </div>
+    <li class="post-card">
+      <h3 class="post-title"><%= post.title %>
+       <span class="post-time">• <%= time_ago_in_words(post.created_at) %> ago</span>
+      </h3>
+      <p  class="post-meta">By: <%= post.user.name %></p>
+      <p  class="post-content"><%= post.content %></p>
+    </li>
   <% end %>
 <% else %>
   <p>No posts yet.</p>
 <% end %>
-<p><%= link_to "Create New Post", new_post_path %></p>
+<p class="new-post-link">
+  <%= link_to "➕ New Post", new_post_path,  class: "floating-btn2" %>
+</p>

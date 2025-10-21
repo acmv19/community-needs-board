@@ -1,43 +1,75 @@
-<h1>Post Details</h1>
-<h2><%= @post.title %></h2>
+<h1 class="page-title">Post Details</h1>
+<div class="post-card">
+<div class="post-header">
+  <div class="avatar"><%= @post.user.name[0].upcase %></div>
+  <h2 class="post-title">
+    <%= @post.title %>
+    <span class="post-time">• <%= time_ago_in_words(@post.created_at) %> ago</span>
+  </h2>
+</div>
+
+<p class= "post-meta">Posted by: <%= @post.user.name %></p>
 <p><%= @post.content %></p>
-<p>Posted by: <%= @post.user.name %></p>
 
 <% if logged_in? && current_user == @post.user %>
-  <%= link_to "Edit Post", edit_post_path(@post) %> |
-  <%= button_to "Delete Post", post_path(@post),
+<div class="post-actions">
+  <%= link_to "✏️ Edit Post", edit_post_path(@post), class:"btn btn-small" %> |
+  <%= button_to "🗑️ Delete Post", post_path(@post),
         method: :delete,
-        data: { confirm: "Are you sure you want to delete this post?" },  class: "btn" %>
+        data: { confirm: "Are you sure you want to delete this post?" },
+          class: "btn btn-small btn-danger" %>
+</div>
+<% end %>
+</div>
+
+<hr  class="section-divider">
+
+<h3  class="section-title">Comments (<%= @post.comments.count %>)</h3>
+<% if @post.comments.any? %>
+<ul class="comment-list">
+<% @post.comments.each do |comment| %>
+  <li class="comment-card">
+    <div class="comment-header">
+    <p>
+      <span class="comment-author"><strong><%= comment.user.name %>:</strong></span>
+      <span class="comment-time">• <%= time_ago_in_words(comment.created_at) %> ago</span>
+    </p>
+    </div>
+    <div class="comment-content">
+    <p><%= comment.content %></p>
+    </div>
+
+      <% if logged_in? && comment.user == current_user %>
+      <div class="comment-actions">
+        | <%= link_to "✏️ Edit", edit_post_comment_path(@post, comment),  class: "btn btn-small"  %> |
+        <%= button_to " 🗑️Delete", post_comment_path(@post, comment),
+              method: :delete,
+              data: { confirm: "Are you sure you want to delete this comment?" } ,  class: "btn btn-small btn-danger" %>
+      </div>
+      <% end %>
+  </li>
+<% end %>
+<% else %>
+  <p class="no-comments">No comments yet. Be the first to comment!</p>
 <% end %>
 
-<h3>Comments</h3>
-<% @post.comments.each do |comment| %>
-  <div>
-    <p>
-      <strong><%= comment.user.name %>:</strong> <%= comment.content %>
-      <% if logged_in? && comment.user == current_user %>
-        | <%= link_to "Edit", edit_post_comment_path(@post, comment),  class: "btn"  %> |
-        <%= button_to "Delete Comment", post_comment_path(@post, comment),
-              method: :delete,
-              data: { confirm: "Are you sure you want to delete this comment?" } ,  class: "btn" %>
-      <% end %>
-    </p>
-  </div>
-<% end %>
+<hr class="section-divider">
 
 <% if logged_in? %>
+ <div class="comment-form">
   <h4>Add a comment</h4>
   <%= form_with(model: [@post, Comment.new], local: true) do |f| %>
     <p>
       <%= f.label :content %><br>
-      <%= f.text_area :content %>
+      <%= f.text_area :content, placeholder:"add a new comment in this post" %>
     </p>
     <%= f.submit "Post Comment",  class: "btn"  %>
   <% end %>
+</div>
 <% else %>
-  <p>You must <%= link_to "log in", login_path,  class: "btn"  %> to comment.</p>
+  <p class= "msm-login">You must <%= link_to "LOGIN", login_path,  class: "btn-login"  %> to comment.</p>
 <% end %>
 
 <p>
-  <%= link_to "Back to Posts", posts_path,  class: "btn"  %>
+  <%= link_to "⬅️ Back to Posts", posts_path,  class: "btn"  %>
 </p>
